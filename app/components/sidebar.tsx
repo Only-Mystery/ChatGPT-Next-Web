@@ -118,9 +118,9 @@ export function SideBar(props: { className?: string }) {
       }`}
     >
       <div className={styles["sidebar-header"]}>
-        <div className={styles["sidebar-title"]}>ChatGPT</div>
+        <div className={styles["sidebar-title"]}>Academic GPT</div>
         <div className={styles["sidebar-sub-title"]}>
-          Your own Academic AI assistant.</br>Run By: Only Mystery
+          Your Academic AI assistant.
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -133,13 +133,6 @@ export function SideBar(props: { className?: string }) {
           text={shouldNarrow ? undefined : Locale.Mask.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
-          shadow
-        />
-        <IconButton
-          icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
-          className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
           shadow
         />
       </div>
@@ -171,6 +164,11 @@ export function SideBar(props: { className?: string }) {
             <Link to={Path.Settings}>
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
+          </div>
+          <div className={styles["sidebar-action"]}>
+            <a href="https://blog.bidc.ltd" target="_blank">
+              <IconButton icon={<PluginIcon />} shadow />
+            </a>
           </div>
         </div>
         <div>
