@@ -218,6 +218,27 @@ export function Settings() {
   const resetConfig = config.reset;
   const chatStore = useChatStore();
 
+  const updateStore = useUpdateStore();
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const currentVersion = formatVersionDate(updateStore.version);
+  const remoteId = formatVersionDate(updateStore.remoteVersion);
+  const hasNewVersion = currentVersion !== remoteId;
+
+  function checkUpdate(force = false) {
+    setCheckingUpdate(true);
+    updateStore.getLatestVersion(force).then(() => {
+      setCheckingUpdate(false);
+    });
+
+    console.log(
+      "[Update] local version ",
+      new Date(+updateStore.version).toLocaleString(),
+    );
+    console.log(
+      "[Update] remote version ",
+      new Date(+updateStore.remoteVersion).toLocaleString(),
+    );
+  }
 
   const usage = {
     used: updateStore.used,
@@ -333,6 +354,7 @@ export function Settings() {
               </div>
             </Popover>
           </ListItem>
+
 
           <ListItem title={Locale.Settings.SendKey}>
             <Select
