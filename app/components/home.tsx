@@ -128,7 +128,6 @@ function Screen() {
           <Route path={Path.Masks} element={<MaskPage />} />
           <Route path={Path.Chat} element={<Chat />} />
           <Route path={Path.Settings} element={<Settings />} />
-          <Route path={Path.QRcode} element={<QRcode />} />
         </Routes>
       </div>
     </div>
